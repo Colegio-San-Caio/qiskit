@@ -1,0 +1,30 @@
+name: Release Binaries
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build / Package Artifacts
+        run: |
+          mkdir -p dist
+          # Include your compiled binaries, scripts, or DB assets
+          [ -f "omqnumpy" ] && cp omqnumpy dist/
+          [ -f "termuxDB.bin" ] && cp termuxDB.bin dist/
+          # Create a compressed bundle
+          tar -czvf omq-artifacts.tar.gz -C dist .
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            omq-artifacts.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
