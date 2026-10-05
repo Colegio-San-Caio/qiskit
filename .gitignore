@@ -1,0 +1,8 @@
+*.o
+*.elf
+*.bin
+*.zip
+__pycache__/
+qenv/
+qiskit-main/
+quantum_test2.py
