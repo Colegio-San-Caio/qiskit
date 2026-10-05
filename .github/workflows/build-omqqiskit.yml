@@ -16,3 +16,16 @@ jobs:
           path: |
             OMQqiskit.exe
             OMQqiskit.exe.sha256
+
+  test-python-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Build Shared Library
+        run: clang -O2 -fPIC -shared omqqiskit.c -o libomqqiskit.so -lm
+      - name: Run Unit Tests
+        run: python test_omqqiskit.py
