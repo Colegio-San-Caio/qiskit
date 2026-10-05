@@ -1,4 +1,7 @@
-from qiskit import QuantumCircuit
+# keep your Bell code, save: Volume Down + o, Enter, Volume Down + x
+git add quantum_test.py
+git rebase --continue
+git push origin mainfrom qiskit import QuantumCircuit
 from qiskit_aer import AerSimulator
 
 circ = QuantumCircuit(2, 2)
