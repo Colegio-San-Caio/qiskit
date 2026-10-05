@@ -1,0 +1,18 @@
+name: build-OMQnumpy-exe
+on:
+  workflow_dispatch:
+  push:
+    paths: ["omqnumpy.c"]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: gcc -O2 -s omqnumpy.c -o OMQnumpy.exe
+      - run: certutil -hashfile OMQnumpy.exe SHA256 > OMQnumpy.exe.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OMQnumpy
+          path: |
+            OMQnumpy.exe
+            OMQnumpy.exe.sha256
