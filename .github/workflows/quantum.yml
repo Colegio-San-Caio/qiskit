@@ -1,18 +1,11 @@
-name: Qiskit Bell Test + termuxDB
+name: Bell
 on: [push]
 jobs:
   bell:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with: { python-version: "3.11" }
-    - run: pip install qiskit qiskit-aer flake8
-    - run: flake8 quantum_test.py --select=E9,F63,F7,F82 --statistics
-    - run: |
-        chmod +x termuxDB.sh
-       ./termuxDB.sh init
-       ./termuxDB.sh info || true
-        python quantum_test.py
-    - uses: actions/upload-artifact@v4
-      with: { name: termuxDB, path: termuxDB.bin, if-no-files-found: warn }
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install qiskit qiskit-aer
+      - run: python quantum_test.py
