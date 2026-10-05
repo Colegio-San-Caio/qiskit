@@ -1,8 +1,15 @@
+# venv
+qenv/
+__pycache__/
+*.pyc
+
+# OS / build junk from screenshot
 *.o
 *.elf
+*.img
 *.bin
 *.zip
-__pycache__/
-qenv/
-qiskit-main/
-quantum_test2.py
+mem_upper
+1422d87
+c56f491
+repo-activity.xml
