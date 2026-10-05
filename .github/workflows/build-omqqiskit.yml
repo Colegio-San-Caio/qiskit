@@ -1,0 +1,18 @@
+name: build-OMQqiskit-exe
+on:
+  workflow_dispatch:
+  push:
+    paths: ["omqqiskit.c"]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: gcc -O2 -s omqqiskit.c -o OMQqiskit.exe -lm
+      - run: certutil -hashfile OMQqiskit.exe SHA256 > OMQqiskit.exe.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OMQqiskit
+          path: |
+            OMQqiskit.exe
+            OMQqiskit.exe.sha256
