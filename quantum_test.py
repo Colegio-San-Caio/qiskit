@@ -1,7 +1,4 @@
-# keep your Bell code, save: Volume Down + o, Enter, Volume Down + x
-git add quantum_test.py
-git rebase --continue
-git push origin mainfrom qiskit import QuantumCircuit
+from qiskit import QuantumCircuit
 from qiskit_aer import AerSimulator
 
 circ = QuantumCircuit(2, 2)
@@ -10,7 +7,6 @@ circ.cx(0, 1)
 circ.measure([0, 1], [0, 1])
 
 sim = AerSimulator()
-job = sim.run(circ, shots=1024)
-counts = job.result().get_counts(circ)
+counts = sim.run(circ, shots=1024).result().get_counts(circ)
 
 print("Total count for 00 and 11 are:", counts)
