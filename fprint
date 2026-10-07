@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# OMQ pull/push sync utility with curl, checksum, and emu_dos.py NT integration
+
+echo "Pulling latest changes from remote..."
+git pull origin main --rebase
+
+TARGET_URL=""
+TARGET_FILE="downloaded_file.bin"
+EXPECTED_HASH=""
+
+if [ -n "$TARGET_URL" ]; then
+    echo "Downloading file via curl..."
+    curl -L -o "$TARGET_FILE" "$TARGET_URL"
+    
+    echo "Verifying checksum..."
+    ACTUAL_HASH=$(sha256sum "$TARGET_FILE" | awk '{print $1}')
+    
+    if [ "$ACTUAL_HASH" = "$EXPECTED_HASH" ]; then
+        echo "Checksum verified successfully!"
+    else
+        echo "ERROR: Checksum mismatch! Expected $EXPECTED_HASH, got $ACTUAL_HASH"
+        exit 1
+    fi
+fi
+
+if [ -f "emu_dos.py" ]; then
+    echo "Running emu_dos.py with -NT..."
+    python3 emu_dos.py -NT
+else
+    echo "emu_dos.py not found in current directory, skipping..."
+fi
+
+git add .
+git commit -m "Auto-sync with curl & emu_dos: $(date +%Y-%m-%d_%H-%M-%S)"
+git push origin main
+
+termux-notification --title "OMQ Status" --content "Sync, download, and execution completed."
