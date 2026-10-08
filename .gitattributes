@@ -1,0 +1,4 @@
+*.xtex text diff=tex
+*.tex text diff=tex
+*.pdf binary
+MOSFETQexchange/output/*.pdf binary
