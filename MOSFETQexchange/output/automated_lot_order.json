@@ -1,0 +1,29 @@
+{
+    "timestamp": "2026-10-08T13:43:57.635070Z",
+    "order_type": "Automated Lot Order / Print-on-Demand",
+    "item_metadata": {
+        "isbn": "9783000684630",
+        "nomenclature": "OENEYE-NN Monograph & Structural Core",
+        "quantity": 50,
+        "namespace": "NN"
+    },
+    "author_metadata": {
+        "name": "Kai Olaf Ketelhut",
+        "orcid": "0000-0001-6049-8873",
+        "station_coordinates": "52.5200\u00b0 N, 13.4050\u00b0 E (Berlin)"
+    },
+    "settlement_gateway": {
+        "provider": "Bunq",
+        "endpoint": "https://public-api.sandbox.bunq.com/v1/",
+        "payment_link": "https://bunq.me/9783000684630"
+    },
+    "compliance": {
+        "axiom_constraint": "1 + 0 = 1",
+        "protocols": [
+            "MIL-STD-1 Proxy Oeneye",
+            "MIL-STD-8C",
+            "CNNN3"
+        ],
+        "pl_code": "36883"
+    }
+}
