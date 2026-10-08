@@ -1,0 +1,11 @@
+{
+    "gateway_type": "Bunq Sandbox API v1",
+    "api_endpoint": "https://public-api.sandbox.bunq.com/v1/",
+    "settlement_reference": "https://bunq.me/9783000684630",
+    "namespace": "NN",
+    "author": "Kai Olaf Ketelhut",
+    "orcid": "0000-0001-6049-8873",
+    "station_coordinates": "52.5200\u00b0 N, 13.4050\u00b0 E (Berlin)",
+    "axiom_constraint": "1 + 0 = 1",
+    "status": "Active Sandbox Linkage"
+}
