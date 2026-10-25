@@ -1,5 +1,8 @@
 name: Bell
 on: [push]
+permissions:
+  contents: read
+
 jobs:
   bell:
     runs-on: ubuntu-latest
